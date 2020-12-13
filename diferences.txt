@@ -1,0 +1,18 @@
+1) The two types of intents are Explicit and Implicit:
+	1) Explicit -  defines the exact application and/or class needed to carry out the intent.  This 
+	2) Implicit - defines the intent by describing a general action, ie. Send an link. 
+	(https://developer.android.com/guide/components/intents-filters)
+
+2.  Explicit is more secure as it can ensure the intent is being carried out by a trustworthy app.  Implicit could potentially direct to a malicious application if the user has defined it as it's default email app.
+
+3.  The SecondFragment Intent is an implicit intent.   It uses the target "Intent.ACTION_VIEW"
+
+4.  The ThirdFragment Intent is an expilict intent.  It targets  ProductScrollingActivity::class.java  which is internal to the app.
+
+5.  The correct intent would be the intent listed from the thirdfragment.  This moves to the ProductScrolling page.  As the registration process also logs in the user, we can navigate to the same location and therefore declare the same intent.    
+
+	var intent = Intent(activity, ProductScrollingActivity::class.java)
+                        intent.putExtra("User", loggedInUser);
+                        startActivity(intent)
+
+
