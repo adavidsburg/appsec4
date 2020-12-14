@@ -1,0 +1,11 @@
+The bug in the use card api is a result of no verification for card ownership.  The final parameter of the url is the card which is selected to be used.  This coresponds dirctley to the id in the database.  If the user were to adjust this as shown below from 310 to 311, the 311 card would be used. The authorization token does not need to match.
+
+This can easily be rectified by adding verification of ownership server side.  If the user id of the card matches the user id of the logged in user proceed.  Otherwise deny!
+
+
+$.ajax({
+  url: "https://appsecclass.report/api/use/310",
+  type: 'PUT',
+  // Fetch the stored token from localStorage and set in the header
+  headers: {"Authorization": "Token 62b20420968c033a2110c905f4cc2fb682fe5870"},
+});
